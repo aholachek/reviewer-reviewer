@@ -1,0 +1,27 @@
+.label {
+  margin-right: 1rem;
+}
+
+.input {
+  margin-right: 0.25rem;
+}
+
+.fieldset {
+  margin: 1rem;
+  columns: 3;
+}
+
+.labelGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-column-gap: 1rem;
+}
+
+.labelName {
+  max-width: 14rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}

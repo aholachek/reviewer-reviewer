@@ -1,0 +1,32 @@
+.avatar {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.defaultAvatar {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  background-color: #e6e9ed;
+  display: inline-block;
+}
+
+.tooltipList {
+  text-align: left;
+  list-style: none;
+  li {
+    margin-bottom: 1rem;
+  }
+}
+
+.prList {
+  text-align: left;
+  li {
+    margin-bottom: 0.5rem;
+  }
+}

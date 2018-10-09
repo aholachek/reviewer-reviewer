@@ -1,0 +1,39 @@
+{
+  "name": "code-review-ranking",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reach/router": "^1.2.1",
+    "apollo-boost": "^0.1.16",
+    "apollo-cache-persist": "^0.1.1",
+    "apollo-link-context": "^1.0.9",
+    "bootstrap": "^4.1.3",
+    "date-fns": "^1.29.0",
+    "graphql": "^14.0.2",
+    "node-sass": "^4.9.3",
+    "query-string": "^6.2.0",
+    "react": "^16.5.2",
+    "react-apollo": "^2.2.4",
+    "react-dom": "^16.5.2",
+    "react-flip-toolkit": "5.0.3-beta1",
+    "react-scripts": "2.0.4",
+    "react-tippy": "^1.2.3",
+    "spectre.css": "^0.5.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "now build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

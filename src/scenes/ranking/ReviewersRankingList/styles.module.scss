@@ -1,0 +1,52 @@
+
+
+.nameLink {
+  display: flex;
+  align-items: center;
+  > img {
+    margin-right: 1rem;
+  }
+}
+
+.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100px;
+}
+
+.container {
+  margin-top: 1rem;
+}
+
+.sortBtn {
+  display: block !important;
+  font-size: 0.5rem !important;
+  padding: 0 0.25rem !important;
+  cursor: pointer !important;
+  height: 1.2rem !important;
+  &:first-of-type {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
+  }
+  &:nth-of-type(2) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.titleRow {
+  text-align: center;
+  div {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+}
+
+.td {
+  text-align: center !important;
+  cursor: pointer;
+}
+
+.tr {
+}
