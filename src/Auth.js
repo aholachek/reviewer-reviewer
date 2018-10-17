@@ -60,7 +60,7 @@ class Auth extends Component {
           <div className="empty-action">
             <a
               className="btn btn-primary"
-              href={`https://micro-github-qqcumfylol.now.sh/login?${queryString.stringify(
+              href={`https://micro-github-reviewer-reviewer.now.sh/login?${queryString.stringify(
                 queryArgs
               )}`}
             >
