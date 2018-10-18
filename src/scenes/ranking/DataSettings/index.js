@@ -15,12 +15,21 @@ class DataSettings extends Component {
     organization: PropTypes.string
   }
 
-  state = {}
+  addFirstFourRepos = data => {
+    if (this.props.repos.length) return
+    this.props.updateRepos(
+      data.repositoryOwner.repositories.nodes.slice(0, 5).map(repo => repo.name)
+    )
+  }
 
   render() {
     const { organization, updateRepos, updateDays, days, repos } = this.props
     return (
-      <Query query={queryReposForOrganization} variables={{ organization }}>
+      <Query
+        query={queryReposForOrganization}
+        variables={{ organization }}
+        onCompleted={this.addFirstFourRepos}
+      >
         {({ loading, error, data }) => {
           if (loading) return "Loading..."
           if (error) return `Error! ${error.message}`
@@ -30,29 +39,27 @@ class DataSettings extends Component {
               <fieldset className={styles.fieldset}>
                 <legend>Repositories</legend>
                 <div className={styles.labelGrid}>
-                  {data.repositoryOwner.repositories.nodes.map(
-                    ({ name, url }) => {
-                      return (
-                        <label className={styles.label}>
-                          <input
-                            className={styles.input}
-                            checked={repos.includes(name)}
-                            type="checkbox"
-                            name="repositories"
-                            value={name}
-                            onChange={e => {
-                              if (e.target.checked) {
-                                updateRepos(repos.concat(name))
-                              } else {
-                                updateRepos(repos.filter(r => r !== name))
-                              }
-                            }}
-                          />
-                          <span className={styles.labelName}>{name}</span>
-                        </label>
-                      )
-                    }
-                  )}
+                  {data.repositoryOwner.repositories.nodes.map(({ name }) => {
+                    return (
+                      <label className={styles.label}>
+                        <input
+                          className={styles.input}
+                          checked={repos.includes(name)}
+                          type="checkbox"
+                          name="repositories"
+                          value={name}
+                          onChange={e => {
+                            if (e.target.checked) {
+                              updateRepos(repos.concat(name))
+                            } else {
+                              updateRepos(repos.filter(r => r !== name))
+                            }
+                          }}
+                        />
+                        <span className={styles.labelName}>{name}</span>
+                      </label>
+                    )
+                  })}
                 </div>
               </fieldset>
               <fieldset className={styles.fieldset}>

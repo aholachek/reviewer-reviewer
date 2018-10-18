@@ -31,6 +31,7 @@ export const getReviewsForRepo = gql`
                 }
                 comments(first: 20) {
                   nodes {
+                    id
                     author {
                       login
                     }

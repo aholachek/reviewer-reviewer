@@ -85,7 +85,8 @@ const analyzePullRequests = pullRequests => {
   Object.keys(reviewerSummaryData).forEach(login => {
     const reviews = reviewerSummaryData[login]
 
-    const thumbsUpFromPRCreator = []
+    // need to dedupe for some reason
+    let thumbsUpFromPRCreator = {}
 
     consolidatedReviews
       .filter(review => review.author.login === login)
@@ -99,11 +100,13 @@ const analyzePullRequests = pullRequests => {
               reaction.user.login === review.prAuthor
             ) {
               comment.prAuthor = review.prAuthor
-              thumbsUpFromPRCreator.push(comment)
+              thumbsUpFromPRCreator[comment.id] = comment
             }
           })
         })
       })
+
+    thumbsUpFromPRCreator = Object.values(thumbsUpFromPRCreator)
 
     // might have multiple entries for a changes_requested and ensuing approval, so unique
     const totalReviews = [...new Set(reviews.map(review => review.prPermalink))]

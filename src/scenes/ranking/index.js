@@ -17,6 +17,7 @@ class ReviewerRatingList extends Component {
   updateRepos = repos => {
     this.setState({ repos })
   }
+
   render() {
     const { organization } = this.props
     return (

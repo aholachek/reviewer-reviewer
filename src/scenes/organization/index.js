@@ -15,7 +15,7 @@ class ChooseOrganization extends Component {
           return (
             <div className="empty centered-empty">
               <h1 className="empty-title h3">
-                Choose an organization to get started
+                Choose an organization
               </h1>
               <ul className="list-unstyled">
                 {data.viewer.organizations.nodes.map(n => {

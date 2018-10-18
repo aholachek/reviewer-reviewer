@@ -7,11 +7,33 @@ import renderTooltip from "./tooltips"
 import styles from "./styles.module.scss"
 
 const tableConfig = [
-  { name: "🏆 score", value: "score" },
-  { name: "total reviewed", value: "total" },
-  { name: "approved", value: "approved" },
-  { name: "# team members reviewed", value: "teamMembersHelped" },
-  { name: "aggregate review quality", value: "thumbsUpReplies" }
+  {
+    name: "🏆 score",
+    value: "score",
+    tooltip: "An aggregate of the values in the other columns"
+  },
+  {
+    name: "PRs reviewed",
+    value: "total",
+    tooltip: "How many PRs did this person review?"
+  },
+  {
+    name: "PRs approved",
+    value: "approved",
+    tooltip: "How many PRs did this person approve?"
+  },
+  {
+    name: "Team members helped",
+    value: "teamMembersHelped",
+    tooltip:
+      "How many team mates did this person help by offering a review?"
+  },
+  {
+    name: "Helpful comments",
+    value: "thumbsUpReplies",
+    tooltip:
+      "How many of this person's comments received 👍 replies from the PR author?"
+  }
 ]
 
 class ReviewersRankingList extends Component {
@@ -34,7 +56,7 @@ class ReviewersRankingList extends Component {
           </div>
           <h2 className="empty-title h3">No data available</h2>
           <p className="empty-subtitle">
-            Select some repositories to get started.
+            ...yet...
           </p>
         </div>
       )
@@ -62,17 +84,19 @@ class ReviewersRankingList extends Component {
         }
       >
         <div class="chip" style={{ marginLeft: "1rem" }}>
-          Hover over the table cells for more information
+          Hover over the table for more information
         </div>
-        <table className="table">
+        <table className="table table-hover">
           <thead>
             <tr>
-              <td className={styles.td}>
+              <th className={styles.td}>
                 <span className="sr-only">team member</span>
-              </td>
-              {tableConfig.map(({ name, value }) => (
-                <td className={styles.titleRow}>
-                  {name}
+              </th>
+              {tableConfig.map(({ name, value, tooltip }) => (
+                <th className={styles.titleRow}>
+                  <Tooltip interactive theme="light" title={tooltip}>
+                    {name}
+                  </Tooltip>
                   <div>
                     <button
                       className={`${styles.sortBtn} btn btn-sm ${
@@ -111,7 +135,7 @@ class ReviewersRankingList extends Component {
                       ▼
                     </button>
                   </div>
-                </td>
+                </th>
               ))}
             </tr>
           </thead>

@@ -5,7 +5,7 @@ import styles from "./styles.module.scss"
 export default function renderTooltip({ type, data, userData, pullRequests }) {
   switch (type) {
     case "score":
-      return <div>An aggregate of all the other columns</div>
+      return <div>Hover over other columns in this row for more detailed data.</div>
     case "total":
       return (
         <ol className={styles.prList}>

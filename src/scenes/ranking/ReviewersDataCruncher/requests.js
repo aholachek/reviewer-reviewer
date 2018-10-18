@@ -29,6 +29,7 @@ export const fetchAllReviewsForLastNDays = days => async ({
         edge => compareAsc(new Date(edge.node.createdAt), nDaysAgo) > -1
       )
     )
+    if (data.repository.pullRequests.edges.length === 0) break
     const finalPR =
       data.repository.pullRequests.edges[
         data.repository.pullRequests.edges.length - 1

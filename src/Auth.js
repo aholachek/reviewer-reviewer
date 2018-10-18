@@ -57,12 +57,19 @@ class Auth extends Component {
             <i className="icon icon-people" />
           </div>
           <p className="empty-title h1">Reviewer Reviewer</p>
+          <p>
+            Explore who the most prolific code
+            reviewers in your Github organization are, and rank them based on
+            their contributions.
+          </p>
           <div className="empty-action">
             <a
               className="btn btn-primary"
-              href={`https://micro-github-reviewer-reviewer.now.sh/login?${queryString.stringify(
-                queryArgs
-              )}`}
+              href={`https://${
+                process.env.NODE_ENV === "development"
+                  ? `micro-github-qqcumfylol.now.sh`
+                  : "micro-github-reviewer-reviewer.now.sh"
+              }/login?${queryString.stringify(queryArgs)}`}
             >
               Sign in with Github to get started
             </a>
