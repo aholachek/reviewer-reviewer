@@ -53,7 +53,7 @@ class ReviewersDataCruncher extends Component {
     })
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     this.fetchData()
   }
 
@@ -61,8 +61,9 @@ class ReviewersDataCruncher extends Component {
     if (
       prevProps.days !== this.props.days ||
       JSON.stringify(prevProps.repos) !== JSON.stringify(this.props.repos)
-    )
+    ) {
       this.fetchData()
+    }
   }
 
   render() {
@@ -71,7 +72,7 @@ class ReviewersDataCruncher extends Component {
       <div>
         <div style={{ height: "1.4rem" }}>
           {this.state.loading && (
-            <div class="toast toast-primary">
+            <div className="toast toast-primary">
               <small>Loading repository data..</small>
             </div>
           )}

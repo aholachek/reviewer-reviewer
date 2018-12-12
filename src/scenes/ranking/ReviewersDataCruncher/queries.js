@@ -9,17 +9,36 @@ export const getReviewsForRepo = gql`
     repository(owner: $organization, name: $repo) {
       pullRequests(
         first: 10
+        states: MERGED
         orderBy: { field: CREATED_AT, direction: DESC }
         after: $cursor
       ) {
         edges {
           cursor
           node {
-            title,
+            title
             createdAt
             permalink
             author {
               login
+            }
+            commits(last: 25) {
+              nodes {
+                commit {
+                  committedDate
+                }
+              }
+            }
+            reviewRequests(first: 10) {
+              edges {
+                node {
+                  requestedReviewer {
+                    ... on User {
+                      login
+                    }
+                  }
+                }
+              }
             }
             reviews(first: 10) {
               nodes {
@@ -35,7 +54,11 @@ export const getReviewsForRepo = gql`
                     author {
                       login
                     }
-                    bodyText
+                    path
+                    replyTo {
+                      id
+                    }
+                    bodyHTML
                     reactions(first: 10) {
                       nodes {
                         content

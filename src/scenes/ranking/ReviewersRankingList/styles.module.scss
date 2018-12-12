@@ -1,4 +1,4 @@
-
+@import "./../../../styles/index";
 
 .nameLink {
   display: flex;
@@ -39,7 +39,7 @@
   text-align: center;
   div {
     display: inline-block;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
 }
 
@@ -48,5 +48,23 @@
   cursor: pointer;
 }
 
-.tr {
+.tdContents {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  padding: 1rem;
+  &:hover {
+    background-color: fade-out($color: $primary-color, $amount: 0.9);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+  list-style: none;
+  grid-auto-rows: 1fr;
 }

@@ -1,0 +1,66 @@
+@import "./tippy.scss";
+
+html,
+body,
+#root,
+#root > *:not(.empty) {
+  height: 100%;
+}
+
+// Spectre Customization
+$primary-color: #121A63;
+$dark-color:  #121A63;
+$secondary-color: #FF5B71;
+$mono-font-family: "Source Code Pro", "SF Mono", "Segoe UI Mono", "Roboto Mono",
+  Menlo, Courier, monospace;
+$base-font-family: "Source Code Pro", -apple-system, system-ui,
+  BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+
+// Import full Spectre source code
+@import "node_modules/spectre.css/src/spectre";
+
+// more general styles
+
+h1,
+h2,
+h3,
+legend {
+  font-weight: bold;
+}
+
+.avatar {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  margin-right: 1rem;
+}
+
+.centered-empty {
+  max-width: 600px;
+  transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  margin: 0 auto;
+}
+
+.list-unstyled {
+  list-style: none;
+}
+
+.card {
+  height: 100%;
+  overflow: hidden;
+  max-height: 22rem;
+}
+
+// utilities
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

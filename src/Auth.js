@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import PropTypes from "prop-types"
 import ApolloClient from "apollo-boost"
 import { ApolloProvider } from "react-apollo"
 import { InMemoryCache } from "apollo-cache-inmemory"
@@ -17,7 +16,7 @@ persistCache({
 })
 
 const queryArgs = {
-  scope: "read:org repo"
+  // scope: "read:org repo"
 }
 
 class Auth extends Component {
@@ -32,6 +31,8 @@ class Auth extends Component {
     if (accessToken) {
       localStorage.setItem(AUTH_TOKEN_KEY, accessToken)
       this.setState({ accessToken })
+      window.location.href = window.location.origin + window.location.pathname;
+
     } else {
       const accessToken = localStorage.getItem(AUTH_TOKEN_KEY)
       if (accessToken) this.setState({ accessToken })
@@ -56,18 +57,17 @@ class Auth extends Component {
           <div className="empty-icon">
             <i className="icon icon-people" />
           </div>
-          <p className="empty-title h1">Reviewer Reviewer</p>
+          <h1 className="empty-title">Reviewer Reviewer</h1>
           <p>
-            Explore who the most prolific code
-            reviewers in your Github organization are, and rank them based on
-            their contributions.
+            Explore who the most prolific code reviewers in your Github
+            organization are, and rank them based on their contributions.
           </p>
           <div className="empty-action">
             <a
               className="btn btn-primary"
               href={`https://${
                 process.env.NODE_ENV === "development"
-                  ? `micro-github-qqcumfylol.now.sh`
+                  ? `micro-github-aygqgdrbzv.now.sh`
                   : "micro-github-reviewer-reviewer.now.sh"
               }/login?${queryString.stringify(queryArgs)}`}
             >

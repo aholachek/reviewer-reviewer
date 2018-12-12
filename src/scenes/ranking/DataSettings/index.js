@@ -15,24 +15,24 @@ class DataSettings extends Component {
     organization: PropTypes.string
   }
 
-  addFirstFourRepos = data => {
-    if (this.props.repos.length) return
-    this.props.updateRepos(
-      data.repositoryOwner.repositories.nodes.slice(0, 5).map(repo => repo.name)
-    )
-  }
-
   render() {
     const { organization, updateRepos, updateDays, days, repos } = this.props
     return (
       <Query
         query={queryReposForOrganization}
         variables={{ organization }}
-        onCompleted={this.addFirstFourRepos}
       >
         {({ loading, error, data }) => {
           if (loading) return "Loading..."
           if (error) return `Error! ${error.message}`
+
+          if (!data.repositoryOwner || !data.repositoryOwner.repositories) {
+            return (
+              <div>
+                No repositories found for organization <b>{organization}</b>
+              </div>
+            )
+          }
 
           return (
             <form>

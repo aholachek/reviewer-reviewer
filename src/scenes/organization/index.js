@@ -12,6 +12,10 @@ class ChooseOrganization extends Component {
           if (loading) return "Loading..."
           if (error) return `Error! ${error.message}`
 
+          if (data) return <pre>
+            {JSON.stringify(data)}
+          </pre>
+
           return (
             <div className="empty centered-empty">
               <h1 className="empty-title h3">

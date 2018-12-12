@@ -5,7 +5,22 @@ import styles from "./styles.module.scss"
 export default function renderTooltip({ type, data, userData, pullRequests }) {
   switch (type) {
     case "score":
-      return <div>Hover over other columns in this row for more detailed data.</div>
+      return (
+        <div>Hover over other columns in this row for more detailed data.</div>
+      )
+    case "prRequestCounts":
+      return (
+        <ol className={styles.prList}>
+          {data.detail.map(prLink => {
+            const pr = pullRequests.find(pr => pr.permalink === prLink)
+            return (
+              <li>
+                <a href={prLink}>{pr ? pr.title : prLink}</a>
+              </li>
+            )
+          })}
+        </ol>
+      )
     case "total":
       return (
         <ol className={styles.prList}>
@@ -62,7 +77,7 @@ export default function renderTooltip({ type, data, userData, pullRequests }) {
           {data.detail.map(comment => {
             return (
               <li>
-                <div>{comment.bodyText}</div>
+                <div dangerouslySetInnerHTML={{ __html: comment.bodyHTML }} />
                 <div>
                   <img
                     src={
